@@ -1,0 +1,25 @@
+.dashboard-container {
+  display: flex;
+  background: #1e1e2f;
+  height: 100vh;
+  color: white;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.stats-cards {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card {
+  background: white;
+  color: black;
+  padding: 20px;
+  border-radius: 10px;
+  width: 30%;
+  text-align: center;
+}

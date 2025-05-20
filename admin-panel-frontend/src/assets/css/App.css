@@ -1,0 +1,48 @@
+/* Fix Sidebar */
+.sidebar {
+    background: #fb6340;
+    color: white;
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    padding: 20px;
+  }
+  
+  .sidebar a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  .sidebar a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+  }
+  
+  /* Fix Navbar */
+  .navbar {
+    background: #172b4d;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar input {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    color: white;
+    width: 200px;
+  }
+  
+  /* Dashboard Main */
+  .dashboard-container {
+    margin-left: 270px;
+    padding: 20px;
+  }
+  

@@ -1,0 +1,197 @@
+/* 🌙 General Styles */
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background: #10182f; /* Dark background */
+  color: white;
+}
+
+/* 📌 Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #F96E2A; /* Orange */
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100; /* Ensure it stays above other elements */
+}
+
+.sidebar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  cursor: pointer;
+  font-size: 18px;
+  color: white;
+}
+
+.sidebar ul li:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.sidebar .icon {
+  margin-right: 10px;
+}
+
+/* 🌟 Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0px; /* Matches sidebar width */
+  width: calc(100% - 0px); /* Full width minus sidebar */
+  height: 50px; /* Adjust height to fit fourth chart */
+  background: #1f2937; /* Dark theme background */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000; 
+  box-shadow: none; /* Remove shadows */
+}
+
+/* 🔹 Right Section */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Adjusts spacing between search bar, folder, and profile icon */
+}
+
+.navbar-container canvas{
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.search-container {
+  flex-grow: 1; /* Takes up all available space */
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 15px; /* Aligns left */
+}
+
+/* 🔍 Search Bar */
+.search-bar {
+  padding: 5px;
+  width: 180px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* 📂 Folder & 👤 Profile Icons */
+.icon, .profile-icon {
+  font-size: 22px;
+  cursor: pointer;
+  color: white;
+}
+
+.profile-icon {
+  margin-right: 20px; /* Adjust this value as needed */
+}
+
+/* 📊 Dashboard */
+.main-content {
+  margin-left: 250px;
+  padding: 20px;
+  padding-top: 60px; /* Push content down below navbar */
+}
+
+/* 📂 Dropdown Container */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* 📜 Hidden Dropdown Content */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  z-index: 10;
+  border-radius: 5px;
+}
+
+/* 🌟 Show Dropdown when Active */
+.dropdown-content a {
+  color: black;
+  padding: 10px 12px;
+  text-decoration: none;
+  display: block;
+  transition: 0.3s;
+}
+
+/* 🔥 Hover Effect */
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+/* 📂 Make dropdown visible when active */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.chart-container {
+  flex: 1 1 30%;
+  max-width: 400px;
+  min-width: 300px;
+  height: 300px;
+  padding: 10px;
+  background: linear-gradient(135deg, white); /* ✅ Gradient */
+  border-radius: 15px; /* ✅ Smooth rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* ✅ Soft shadow */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.chart-container canvas {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.chart-wrapper {
+  display: flex;
+  justify-content: center;  /* ✅ Centers charts */
+  flex-wrap: wrap;          /* ✅ Ensures responsiveness */
+  gap: 20px;                /* ✅ Adds space between charts */
+}
+
+/* ================= Fourth Chart Full-Width Container ================= */
+.fourth-chart-container {
+  position: absolute;
+  top: 70px; /* Adjust based on navbar height */
+  left: 250px; /* Matches sidebar width */
+  width: calc(100% - 250px); /* Full width minus sidebar */
+  height: 200px; /* Adjust based on design */
+  background: #1f2937; /* Same as navbar background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; /* Ensures it's layered correctly */
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+.fourth-chart-container canvas {
+  width: 95% !important;
+  height: 100% !important;
+}
+
+.chart-wrapper {
+  margin-top: 230px; /* Push the other charts below the navbar-blended chart */
+}

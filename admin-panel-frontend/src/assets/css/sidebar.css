@@ -1,0 +1,80 @@
+/* 🎨 Sidebar Styling */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #ff5722; /* 🔥 Orange Background */
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🏆 Sidebar Logo */
+.sidebar .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* 📌 Sidebar Menu */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 🏷️ Sidebar Links - Default (White) */
+.sidebar ul li {
+  width: 100%;
+}
+
+.sidebar ul li a {
+  text-decoration: none; /* ❌ Removes Blue Underline */
+  transition: background 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  width: 100%; /* ✅ Full Width Clickable */
+}
+
+/* 📌 Clickable Container */
+.nav-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  color: white; /* ✅ Default White Text */
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* 📌 Sidebar Icons - Default White */
+.nav-item .icon {
+  margin-right: 10px;
+  font-size: 20px;
+  color: white; /* ✅ Default White Icon */
+  transition: color 0.3s ease-in-out;
+}
+
+/* 🖱️ Hover Effect */
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ✅ Active Page Highlight */
+.active-link .nav-item {
+  background: white;
+  color: #ff5722 !important; /* 🔥 Text Turns Orange */
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* ✅ Active Link Styling for Icon */
+.active-link .nav-item .icon {
+  color: #ff5722 !important; /* 🔥 Icon Turns Orange */
+}

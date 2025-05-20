@@ -1,0 +1,52 @@
+/* 🏠 Navbar */
+.navbar {
+  width: calc(100% - 0px); /* Full width except sidebar */
+  height: 50px;
+  background: #0c2340; /* Dark blue */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Keep search on left, icons on right */
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 0px;
+  right: 0;
+  z-index: 100;
+}
+
+/* 📌 Left Section: Search Bar */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  flex: 1; /* Pushes icons to right */
+}
+
+/* 📌 Right Section: Folder & Profile Icons */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Space between icons */
+}
+
+/* 🔍 Search Bar */
+.search-bar {
+  padding: 6px;
+  width: 200px;
+  border: 1px solid #555;
+  border-radius: 5px;
+}
+
+/* 🛠️ Icons */
+.icon {
+  font-size: 18px;
+  cursor: pointer;
+  color: white;
+}
+
+/* 👤 Profile Icon */
+.profile-icon {
+  font-size: 22px;
+  cursor: pointer;
+  color: white;
+}
