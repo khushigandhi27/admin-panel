@@ -1,9 +1,12 @@
 {
-  "name": "admin-panel",
+  "name": "admin-panel-fullstack",
   "version": "1.0.0",
   "scripts": {
-    "install": "cd admin-panel-backend && npm install && cd ../admin-panel-frontend && npm install",
+    "install": "npm install --prefix admin-panel-frontend && npm install --prefix admin-panel-backend",
     "build": "npm run build --prefix admin-panel-frontend",
-    "start": "cd admin-panel-backend && node index.js"
+    "start": "NODE_ENV=production node admin-panel-backend/index.js"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
