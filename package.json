@@ -1,0 +1,9 @@
+{
+  "name": "admin-panel",
+  "version": "1.0.0",
+  "scripts": {
+    "install": "cd admin-panel-backend && npm install && cd ../admin-panel-frontend && npm install",
+    "build": "npm run build --prefix admin-panel-frontend",
+    "start": "cd admin-panel-backend && node index.js"
+  }
+}
