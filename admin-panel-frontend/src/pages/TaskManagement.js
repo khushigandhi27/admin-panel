@@ -8,7 +8,7 @@ const TaskManagement = () => {
   const [error, setError] = useState(null);
   const [file, setFile] = useState(null);
 
-  const apiUrl = process.env.REACT_APP_API_URL;
+  //const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     fetchData();
@@ -18,7 +18,7 @@ const TaskManagement = () => {
   const fetchData = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${apiUrl}/api/task/get-all`);
+      const res = await axios.get(`/api/task/get-all`);
       if (res.data.success) setData(res.data.data);
       else throw new Error("Failed to fetch content");
     } catch (err) {
@@ -40,7 +40,7 @@ const TaskManagement = () => {
 
     try {
       setLoading(true);
-      const res = await axios.post(`${apiUrl}/api/task/upload`, formData, {
+      const res = await axios.post(`/api/task/upload`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert(res.data.message || "Upload successful!");

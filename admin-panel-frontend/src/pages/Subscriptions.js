@@ -10,7 +10,7 @@ const SubscriptionManagement = () => {
   const fetchSubscriptions = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/subscriptions/get-all`);
+      const res = await axios.get(`/api/subscriptions/get-all`);
       if (res.data.success) setSubscriptions(res.data.data);
     } catch (err) {
       console.error("Failed to load subscriptions", err);
