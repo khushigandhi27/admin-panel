@@ -16,9 +16,12 @@ app.use(express.json());
 
 // ✅ Updated CORS Configuration
 const allowedOrigins = [
-  "https://admin-panel-frontend.netlify.app",
-  "http://localhost:3000"
+  "http://localhost:3000",
+  undefined
 ];
+
+// Serve frontend build statically
+app.use(express.static(path.join(__dirname, "../admin-panel-frontend/build")));
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -35,14 +38,17 @@ app.use(cors({
   exposedHeaders: ["Content-Disposition"] // For file uploads
 }));
 
-
-
-
 // ✅ Routes
 app.use("/api/users", userRoutes);
 app.use("/api/task", taskRoutes);
 app.use("/api/test", testRoutes);
 app.use("/api/subscriptions", subscriptionRoutes);
+
+// Fallback to React index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../admin-panel-frontend/build", "index.html"));
+});
+
 
 // ✅ Error Handling Middleware (at the end)
 app.use((err, req, res, next) => {
@@ -59,6 +65,8 @@ app.get("/api/test-db", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+
 
 // ✅ Root Route
 app.get("/", (req, res) => {
