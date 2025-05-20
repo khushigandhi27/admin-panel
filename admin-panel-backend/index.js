@@ -1,8 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const db = require("./src/config/db");
 const path = require("path");
+const db = require("./src/config/db");
 
 require("./src/models/taskModel");
 require("./src/models/userModel");
@@ -16,50 +16,23 @@ const subscriptionRoutes = require("./src/routes/subscriptionRoute");
 
 const app = express();
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// ✅ Updated CORS Configuration
-const allowedOrigins = [
-  "http://localhost:3000",
-  undefined
-];
-
-// Serve frontend build statically
-app.use(express.static(path.join(__dirname, "../admin-panel-frontend/build")));
-
+// ✅ CORS setup
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      console.error("🚫 CORS Error: Blocked origin =>", origin);
-      callback(new Error("CORS Not Allowed"));
-    }
-  },
+  origin: "*",
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
-  exposedHeaders: ["Content-Disposition"] // For file uploads
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"]
 }));
 
-// ✅ Routes
+// ✅ API Routes
 app.use("/api/users", userRoutes);
 app.use("/api/task", taskRoutes);
 app.use("/api/test", testRoutes);
 app.use("/api/subscriptions", subscriptionRoutes);
 
-// Fallback to React index.html
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../admin-panel-frontend/build", "index.html"));
-});
-
-
-// ✅ Error Handling Middleware (at the end)
-app.use((err, req, res, next) => {
-  console.error("ERROR: ", err.stack);
-  res.status(500).json({ error: "Internal Server Error", details: err.message });
-});
-
-// ✅ Test Database Connection Endpoint
+// ✅ Database Test
 app.get("/api/test-db", async (req, res) => {
   try {
     const [rows] = await db.query("SHOW TABLES");
@@ -69,18 +42,23 @@ app.get("/api/test-db", async (req, res) => {
   }
 });
 
-
-
-// ✅ Root Route
-app.get("/", (req, res) => {
-  res.send("Welcome to the Admin Panel Backend API");
+// ✅ Error Handling
+app.use((err, req, res, next) => {
+  console.error("❌ INTERNAL ERROR:", err.stack);
+  res.status(500).json({ error: "Internal Server Error", details: err.message });
 });
 
-// ✅ Start the Server
+// ✅ Serve React frontend (AFTER all routes)
+app.use(express.static(path.join(__dirname, "../admin-panel-frontend/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../admin-panel-frontend/build/index.html"));
+});
+
+// ✅ Start server
 const PORT = process.env.PORT || 8080;
 const server = app.listen(PORT, () => {
   console.log(`✅ Server running on http://localhost:${PORT}`);
 });
 
-// ✅ Increase server timeout to 5 minutes
-server.setTimeout(500000); // 5 minutes
+server.setTimeout(500000); // optional
